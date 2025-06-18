@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Productos</title></head>
+<body>
+<h1>Productos</h1>
+<ul>
+{% for id, p in products.items() %}
+  <li>{{ p.name }} - €{{ p.price / 100 }}
+    <a href="{{ url_for('add_to_cart', id=id) }}">Agregar al carrito</a>
+  </li>
+{% endfor %}
+</ul>
+<a href="{{ url_for('cart') }}">Ver carrito</a>
+</body>
+</html>

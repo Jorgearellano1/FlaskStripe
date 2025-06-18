@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Carrito</h1>
+
+  <ul>
+    {% for item in items %}
+      <li>{{ item.name }} x {{ item.qty }} = €{{ item.subtotal / 100 }}</li>
+    {% endfor %}
+  </ul>
+
+  <p>Total: €{{ total / 100 }}</p>
+
+  <form action="{{ url_for('create_checkout_session') }}" method="POST">
+    <button type="submit">Pagar con Stripe</button>
+  </form>
+
+  <p><a href="{{ url_for('index') }}">Seguir comprando</a></p>
+</body>
+</html>
